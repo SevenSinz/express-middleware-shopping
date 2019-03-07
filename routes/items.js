@@ -41,7 +41,23 @@ router.get("/items/:name", function(req, res, next) {
     }
 });
 
-
+router.patch("/items/:name", function(req, res, next) {
+    try {
+        itemName = req.params.name;
+        console.log(itemName)
+        
+        for (let item of itemsList) {
+            if (item.name===itemName){
+                item.name=req.body.name;
+                item.price=req.body.price;
+                return res.json({'response': item})
+            }
+        } 
+        throw new ExpressError("Item not in the inventory", 404)
+    } catch(err) {
+        return next(err)
+    }
+});
 
 
 module.exports = router

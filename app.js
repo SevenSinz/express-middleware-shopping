@@ -16,7 +16,7 @@ app.use(function (req, res, next) {
   
 // generic error handler
 app.use(function(err, req, res, next) {
-    // the default status is 500 Internal Server Error
+    // the default statuns is 500 Internal Server Error
     let status = err.status || 500;
 
     // set the status and alert the user
@@ -27,5 +27,10 @@ app.use(function(err, req, res, next) {
         }
     });
 }); 
+
+
+
+
+
 
 module.exports = app;
